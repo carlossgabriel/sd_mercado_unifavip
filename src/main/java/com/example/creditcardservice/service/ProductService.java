@@ -35,11 +35,10 @@ public class ProductService {
         return repository.save(entity);
     }
 
-    //TODO fix delete method in product
     public void delete(Long id){
         Product product = findById(id);
-//        product.setDe
-//        repository.save(product);
+        product.setDeleted(true);
+        repository.save(product);
     }
 
 }

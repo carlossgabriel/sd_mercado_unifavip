@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Where(clause="is_deleted=0")
 @DynamicUpdate
 @Table(name = "product")
 public class Product {
@@ -31,5 +33,8 @@ public class Product {
 
     @Column(nullable = false)
     private int storage;
+    
+    @Column(name = "is_deleted", nullable = false)
+    private boolean deleted;
 
 }
